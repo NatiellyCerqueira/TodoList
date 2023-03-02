@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDolist</title>
+</head>
+<body>
+        <form id="form">
+            <input id="input" type="text">
+        </form>
+        <ul id="lista"></ul>
+
+    <script>
+        const input = document.querySelector("#input")
+        const form = document.querySelector("#form")
+        const lista = document.querySelector("#lista")
+        const todoList = []
+
+        const montaLista = () => {
+        lista.innerHTML = ""
+        
+        todoList.forEach((item) => {
+            lista.innerHTML += `<li>${item.text}</li>`
+        })
+        }
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault() 
+            const value = input.value 
+        todoList.push({
+            id: todoList.length,
+            text: value
+        }) 
+        console.log({ todoList })
+        montaLista()
+        })
+    </script>
+</body>
+</html>
