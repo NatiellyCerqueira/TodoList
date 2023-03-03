@@ -16,15 +16,22 @@
         const input = document.querySelector("#input")
         const form = document.querySelector("#form")
         const lista = document.querySelector("#lista")
-        const todoList = []
+        let todoList = []
 
         const montaLista = () => {
         lista.innerHTML = ""
         
         todoList.forEach((item) => {
-            lista.innerHTML += `<li>${item.text}</li>`
+            lista.innerHTML += `<li>${item.text} <button class="remover" data-id="${item.id}">X</button></li>`
         })
-        }
+        document.querySelectorAll(".remover").forEach((item) => {
+  	const dataId = item.getAttribute("data-id")
+  	item.addEventListener("click", () => {
+      todoList = todoList.filter(itemList => itemList.id != dataId)
+      montaLista()
+		})
+  })
+}
 
         form.addEventListener("submit", (e) => {
             e.preventDefault() 
